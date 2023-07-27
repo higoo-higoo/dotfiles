@@ -1,0 +1,29 @@
+snippet texinit
+		\documentclass[a4j,11pt,dvipdfmx]{jsarticle}
+		\title {${1:title}}
+		\author {${2:name}}
+		\date {\today}
+		\usepackage{listings}
+		\lstset{
+		  language = python,
+		  frame=t,
+		  numbers=left,
+		  tabsize=2,
+		  breaklines = true,
+		  columns=fixed,
+		  basewidth=0.5em,
+		}
+		\usepackage[margin=20truemm]{geometry}
+		\usepackage[dvipdfmx]{graphicx}
+		\usepackage{float}
+		\usepackage{amsmath,amssymb}
+		\usepackage{url}
+		\usepackage{siunitx}
+		\usepackage[enable]{easy-todo}
+		\begin{document}
+		\maketitle
+		\setcounter{section}{-1}
+		\tableofcontents
+		\end{document}
+
+		
