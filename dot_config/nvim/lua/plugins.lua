@@ -45,12 +45,13 @@ require('packer').startup(function(use)
 			require("plugins.lualine")
 		end
 	}
+	--[[
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		config = function ()
 			require("plugins.nvim-treesitter")
 		end}
-
+	--]]
 	-- Coding
 	use 'jiangmiao/auto-pairs'
 	use {
@@ -61,6 +62,12 @@ require('packer').startup(function(use)
 	}
 	use "github/copilot.vim"
 	use "tpope/vim-surround"
+	use {
+		"vim-scripts/DoxygenToolkit.vim",
+		config = function ()
+			vim.keymap.set('n', '<Leader>dox', '<Cmd>Dox<CR>', {})
+		end
+	}
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'
@@ -71,7 +78,12 @@ require('packer').startup(function(use)
 	use "hrsh7th/cmp-path"
 	use "hrsh7th/cmp-buffer"
 	use "hrsh7th/cmp-cmdline"
-	use "dcampos/nvim-snippy"
+	use {
+		"dcampos/nvim-snippy",
+		config = function ()
+			require("plugins.nvim-snippy")
+		end
+	}
 	use "dcampos/cmp-snippy"
 end)
 require("plugins.lspconfig")
