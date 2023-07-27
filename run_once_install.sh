@@ -32,4 +32,7 @@ elif ["$(expr substr $(uname -s) 1 5)" == 'Linux']; then
 	cd ~
 	rm Meslo.zip
 	fc-cache -fv
-elif 
+fi
+
+# fishのinstall
+./scripts/fish.sh
