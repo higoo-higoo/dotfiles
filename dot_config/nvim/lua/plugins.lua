@@ -68,6 +68,12 @@ require('packer').startup(function(use)
 			vim.keymap.set('n', '<Leader>dox', '<Cmd>Dox<CR>', {})
 		end
 	}
+	use {
+		"akinsho/toggleterm.nvim",
+		config = function ()
+			require("plugins.toggleterm")
+		end
+	}
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'
