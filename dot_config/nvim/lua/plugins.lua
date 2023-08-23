@@ -60,8 +60,14 @@ require('packer').startup(function(use)
 			require("plugins.jaq-nvim")
 		end
 	}
-	use "github/copilot.vim"
-	use "tpope/vim-surround"
+
+	use {
+		"github/copilot.vim",
+		config = function ()
+			require("plugins.copilot")
+		end
+	}
+	-- use "tpope/vim-surround"
 	use {
 		"vim-scripts/DoxygenToolkit.vim",
 		config = function ()
@@ -70,7 +76,7 @@ require('packer').startup(function(use)
 	}
 	use {
 		"akinsho/toggleterm.nvim",
-		config = function ()
+		config = function()
 			require("plugins.toggleterm")
 		end
 	}
