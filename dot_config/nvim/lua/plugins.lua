@@ -34,6 +34,16 @@ require('packer').startup(function(use)
 	-- Git
 	use { 'tpope/vim-fugitive' }
 	use { 'airblade/vim-gitgutter' }
+	-- nvim v0.7.2
+	use({
+			"kdheepak/lazygit.nvim",
+			requires = {
+					"nvim-lua/plenary.nvim",
+			},
+			config = function()
+					require("plugins.lazygit")
+			end,
+	})
 
 	-- Appearence
 	use { 'morhetz/gruvbox' }
@@ -63,20 +73,26 @@ require('packer').startup(function(use)
 			require("plugins.jaq-nvim")
 		end
 	}
-
 	use {
 		"github/copilot.vim",
 		config = function ()
 			require("plugins.copilot")
 		end
 	}
-	-- use "tpope/vim-surround"
 	use {
 		"vim-scripts/DoxygenToolkit.vim",
 		config = function ()
 			vim.keymap.set('n', '<Leader>dox', '<Cmd>Dox<CR>', {})
 		end
 	}
+	use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+	}
+
+
 	use {
 		"akinsho/toggleterm.nvim",
 		config = function()
