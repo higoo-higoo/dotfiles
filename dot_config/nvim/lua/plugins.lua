@@ -10,11 +10,20 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- File Explorer
 	use {
-	'ibhagwan/fzf-lua',
-	config = function()
-		require('plugins.fzf-lua')
-	end
-	}	use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
+	  requires = { {'nvim-lua/plenary.nvim'} },
+	  config = function()
+		require('plugins.telescope')
+	  end
+
+	}
+	use {
+	  "nvim-telescope/telescope-frecency.nvim",
+	  config = function()
+		require("telescope").load_extension "frecency"
+	  end,
+	}
+	use {
 		"kyazdani42/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -45,13 +54,7 @@ require('packer').startup(function(use)
 			require("plugins.lualine")
 		end
 	}
-	--[[
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		config = function ()
-			require("plugins.nvim-treesitter")
-		end}
-	--]]
+
 	-- Coding
 	use 'jiangmiao/auto-pairs'
 	use {

@@ -1,39 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 
-sudo apt install trash-cli
-# Packer.nvimのインストール
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# weztermのインストール
-if [ "$(uname)" == 'Darwin'] ; then
-	brew tap homebrew/cask-versions
-	brew install --cask wezterm-nightly
-elif ["$(expr substr $(uname -s) 1 5)" == 'Linux']; then
-	curl -LO https://github.com/wez/wezterm/releases/download/nightly/wezterm-nightly.Ubuntu22.04.deb
-	sudo dpkg -i wezterm-nightly.Ubuntu22.04.deb
-	rm wezterm-nightly.Ubuntu22.04.deb
+# peco
+if [[ "$(uname)" == "Darwin" ]]
+	brew install peco
+else if ! type peco > /dev/null 2>&1; then
+    wget https://github.com/peco/peco/releases/download/v0.5.10/peco_linux_amd64.tar.gz -O /tmp/peco.tar.gz
+    tar -xvf /tmp/peco.tar.gz -C /tmp/
+    mv /tmp/peco_linux_amd64/peco ~/.local/bin/
 fi
 
-# fontのinstall
-if [ "$(uname)" == 'Darwin'] ; then
-	curl -LO https://github.com/powerline/fonts/raw/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf
-	sudo cp Meslo%20LG%20M%20Regular%20for%20Powerline.ttf /Library/Fonts
-	sudo atsutil databases -remove
-	sudo atsutil server -shutdown
-	sudo atsutil server -ping
-elif ["$(expr substr $(uname -s) 1 5)" == 'Linux']; then
-	sudo apt install fontconfig
-	cd ~
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-	mkdir -p .local/share/fonts
-	unzip Meslo.zip -d .local/share/fonts
-	cd .local/share/fonts
-	rm *Windows*
-	cd ~
-	rm Meslo.zip
-	fc-cache -fv
+
+# zgen
+if [[ ! -e "$HOME/.zgen" ]]; then
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
 fi
 
-# fishのinstall
-./scripts/fish.sh
+# fzf
+if [[! -e "$HOME/.fzf"]]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --no-completion --no-key-bindings --no-update-rc
+fi

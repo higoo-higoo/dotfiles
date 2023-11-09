@@ -1,0 +1,68 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#!/bin/zsh
+# 履歴の設定
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=1000
+SAVEHIST=100000
+HISTORY_IGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+# alias
+if [[ $(command -v exa) ]]; then
+    alias l='exa --icons'
+    alias ls=l
+    alias la='ls -a'
+    alias ll='ls -aahl'
+    alias lc='clear && ls'
+fi
+
+
+#zgen
+source "${HOME}/.zgen/zgen.zsh"
+if ! zgen saved; then
+	# 履歴
+	zgen load zsh-users/zsh-autosuggestions
+	# 補完
+	zgen load zsh-users/zsh-completions
+	# ハイライト
+	zgen load zsh-users/fast-syntax-highlighting
+	# みため
+	zgen load romkatv/powerlevel10k powerlevel10k 
+	# 保存
+	zgen save
+fi
+
+# peco
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+
+# fg
+function run-fglast {
+   zle push-input
+   BUFFER="fg %"
+   zle accept-line
+}
+zle -N run-fglast
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# キーバインド
+bindkey -v
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$PATH

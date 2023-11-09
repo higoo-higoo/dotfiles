@@ -11,6 +11,11 @@ require('mason-lspconfig').setup_handlers({ function(server)
 	}
 	require('lspconfig')[server].setup(opt)
 end })
+local lspconfig = require('lspconfig')
+	local cmd = {'clangd',"--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++"}
+	lspconfig.clangd.setup{
+		cmd = cmd
+	}
 
 -- 2. build-in LSP function
 -- keyboard shortcut
@@ -47,7 +52,6 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<Tab>"] = cmp.mapping.select_next_item(),
-		['<C-l>'] = cmp.mapping.complete(),
 		['<C-c>'] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm { select = true },
 	}),

@@ -11,9 +11,9 @@ vim.opt.hlsearch = true -- Highlight Word in Search
 
 -- Indent
 vim.opt.smartindent = true -- Auto Indent
-vim.opt.tabstop = 4 -- 4 Spaces Treated as Tab
-vim.opt.softtabstop = 4 -- <tab> Makes 4 Spaces
-vim.opt.shiftwidth = 4 -- <Enter>, << , >> Make 4 Spaces
+vim.opt.tabstop = 2 -- 4 Spaces Treated as Tab
+vim.opt.softtabstop = 2 -- <tab> Makes 2 Spaces
+vim.opt.shiftwidth = 2 -- <Enter>, << , >> Make 2 Spaces
 
 -- Complement
 vim.opt.wildmode = "list:longest" -- Command Line Complement
