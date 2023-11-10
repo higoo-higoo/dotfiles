@@ -55,7 +55,7 @@ function run-fglast {
 zle -N run-fglast
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && ~/.fzf/shell/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.fzf/shell/key-bindings.zsh
 
 # キーバインド
 bindkey -v
