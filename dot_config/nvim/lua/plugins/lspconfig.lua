@@ -20,7 +20,6 @@ local lspconfig = require('lspconfig')
 -- 2. build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', 'K',	'<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<Leader>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 vim.keymap.set('n', '<Leader>rf', '<cmd>lua vim.lsp.buf.references()<CR>')
 vim.keymap.set('n', '<Leader>df', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', '<Leader>dc', '<cmd>lua vim.lsp.buf.declaration()<CR>')
