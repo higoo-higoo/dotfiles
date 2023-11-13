@@ -105,6 +105,15 @@ require('packer').startup(function(use)
 			require("plugins.toggleterm")
 		end
 	}
+	use({
+    "iamcco/markdown-preview.nvim",
+    run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		config = function()
+			require("plugins.markdown-preview")
+		end
+	})
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'
