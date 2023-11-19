@@ -71,3 +71,13 @@ PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$PATH
 # direnv
 eval "$(direnv hook zsh)"
 
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  eval "$(rbenv init -)"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+	export CPLUS_INCLUDE_PATH=/opt/homebrew/include:$CPLUS_INCLUDE_PATH
+	export CPPYGEN_LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib
+	export CC=/opt/homebrew/opt/llvm/bin/clang
+	export CXX=/opt/homebrew/opt/llvm/bin/clang++
+fi
