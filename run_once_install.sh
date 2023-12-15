@@ -1,18 +1,36 @@
 #!/bin/bash
 set -xe
 
-# neovim
+# nodebrew
 if [[ "$(uname)" == "Darwin" ]]; then
 	brew install nodebrew
 	nodebrew setup
 	echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zshrc
 	source ~/.zshrc
-else
+# nodeがインストールされているか
+elif [[ ! -e "/usr/local/bin/node" ]]; then
 	sudo apt update
 	sudo apt -y install nodejs npm
 	sudo npm install n -g
 	sudo n stable
 	sudo apt -y remove nodejs npm
+fi
+
+# neovim
+if [[ "$(uname)" == "Darwin" ]]; then
+	brew install neovim
+else
+	# sudo apt install neovim
+	sudo apt-get install ripgrep
+	sudo apt install unzip
+	sudo apt install clang-format
+	curl https://sh.rustup.rs -sSf | sh
+	cargo install stylua
+fi
+# packerがインストールされているか
+if [[ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 	
 
@@ -23,6 +41,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
 	wget https://github.com/peco/peco/releases/download/v0.5.10/peco_linux_amd64.tar.gz -O /tmp/peco.tar.gz
 	tar -xvf /tmp/peco.tar.gz -C /tmp/
+	mkdir -p ~/.local/bin
 	mv /tmp/peco_linux_amd64/peco ~/.local/bin/
 fi
 
@@ -68,3 +87,8 @@ else
 	sudo install lazygit /usr/local/bin
 	rm lazygit.tar.gz lazygit
 fi
+
+chsh -s /bin/zsh
+git config --global core.editor 'nvim'
+git config --global user.name higoo-higoo
+git config --global user.email higyuki1101@gmail.com
