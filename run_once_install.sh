@@ -1,12 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
 set -xe
 
 # nodebrew
 if [[ "$(uname)" == "Darwin" ]]; then
 	brew install nodebrew
 	nodebrew setup
-	echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zshrc
-	source ~/.zshrc
 # nodeがインストールされているか
 elif [[ ! -e "/usr/local/bin/node" ]]; then
 	sudo apt update
@@ -88,7 +86,7 @@ else
 	rm lazygit.tar.gz lazygit
 fi
 
-chsh -s /bin/zsh
 git config --global core.editor 'nvim'
 git config --global user.name higoo-higoo
 git config --global user.email higyuki1101@gmail.com
+source ~/.zshrc

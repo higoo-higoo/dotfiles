@@ -29,3 +29,17 @@ snippet texinit
 		\end{document}
 
 		
+snippet beamerinit
+	\documentclass[t, 16pt, dvipdfmx, handout]{beamer}
+	\title {${1:title}}
+	\author {${2:name}}
+	\usepackage{algorithm}
+	\usepackage{algorithmic}
+	\usepackage{algorithmicx}
+	\date{}
+	\usetheme{Rochester}
+	\begin{document}
+	\begin{frame}{}
+		\titlepage
+	\end{frame}
+	\end{document}

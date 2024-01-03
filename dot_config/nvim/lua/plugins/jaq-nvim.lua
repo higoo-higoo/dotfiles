@@ -5,11 +5,10 @@ require('jaq-nvim').setup{
       lua = "luafile %",
       vim = "source %",
     },
-
     -- Uses shell commands
     external = {
-      sh       = "sh %",
-	  tex = "latexmk -pvc"
+      sh       = "zsh %",
+			tex = "latexmk -pvc $filePath -outdir=$fileBase"
     }
   },
 
