@@ -20,7 +20,7 @@ vim.opt.wildmode = "list:longest" -- Command Line Complement
 vim.opt.infercase = true -- Case Insensitive
 
 -- Copy
-vim.opt.clipboard:append{'unnamedplus'}
+vim.opt.clipboard:append({ "unnamedplus" })
 
 -- Log
 vim.opt.history = 5000 -- Save 5000 Command Log
@@ -29,7 +29,6 @@ vim.opt.undofile = false -- Don't Save Undo File
 vim.opt.backup = false -- Don't Save Back Up
 
 -- Others
-vim.cmd [[ filetype plugin indent on ]]
+vim.cmd([[ filetype plugin indent on ]])
 vim.g.tex_flavor = "latex"
-vim.cmd [[set path+=/use/local/bin]]
-
+vim.cmd([[set path+=/use/local/bin]])

@@ -1,5 +1,5 @@
-local opts = {noremap = true, silent = true}
-local team_opts = {silent = true}
+local opts = { noremap = true, silent = true }
+local team_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- leaderを,に変更

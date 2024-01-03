@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 try
 	colorscheme gruvbox
 	highlight Normal ctermbg=NONE guibg=NONE
@@ -10,4 +10,4 @@ catch /^Vim\%((\a\+)\)\=:E185/
 	colorscheme default
 	set background=dark
 endtry
-]]
+]])
