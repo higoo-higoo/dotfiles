@@ -1,3 +1,12 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"clangd",
+		"lua_ls",
+		"pyright",
+		"texlab",
+	},
+})
 require("mason-lspconfig").setup_handlers({
 	function(server)
 		local opt = {
@@ -12,11 +21,13 @@ require("mason-lspconfig").setup_handlers({
 		require("lspconfig")[server].setup(opt)
 	end,
 })
+--[[
 local lspconfig = require("lspconfig")
 local cmd = { "clangd", "--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++" }
 lspconfig.clangd.setup({
 	cmd = cmd,
-})
+})]]
+--
 
 -- 2. build-in LSP function
 -- keyboard shortcut
