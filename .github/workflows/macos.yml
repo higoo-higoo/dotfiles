@@ -13,5 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run script
-        uses: ${GITHUB_WOEKSPACE}/run_once_install.sh
+        run: ${GITHUB_WOEKSPACE}/run_once_install.sh
 
