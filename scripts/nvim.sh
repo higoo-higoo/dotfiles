@@ -4,12 +4,10 @@ set -xe
 if [ "$(uname)" = "Darwin" ]; then
 	brew install neovim
 else
-	# sudo apt install neovim
+	sudo apt install neovim
 	sudo apt-get install ripgrep
 	sudo apt install unzip
 	sudo apt install clang-format
-	curl https://sh.rustup.rs -sSf | sh
-	cargo install stylua
 fi
 
 # packerがインストールされているか

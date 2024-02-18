@@ -13,7 +13,7 @@ SAVEHIST=100000
 HISTORY_IGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 # alias
-alias l='exa --icons'
+alias l='eza --icons'
 alias ls=l
 alias la='ls -a'
 alias ll='ls -aahl'

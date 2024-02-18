@@ -1,20 +1,26 @@
 #!/bin/sh
 set -xe
 
+if [ "$CHEZMOI_SOURCE_DIR" = "" ]; then
+	SOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
+else
+	SOURCE_DIR="$CHEZMOI_SOURCE_DIR"
+fi
+
 # nodebrew
-./scripts/node.sh
+"$SOURCE_DIR"/scripts/node.sh
 
 # neovim
-./scripts/nvim.sh
+"$SOURCE_DIR"/scripts/nvim.sh
 
 # peco
-./scripts/peco.sh
+"$SOURCE_DIR"/scripts/peco.sh
 
 # direnv
-./scripts/direnv.sh
+"$SOURCE_DIR"/scripts/direnv.sh
 
 # exa
-./scripts/exa.sh
+"$SOURCE_DIR"/scripts/exa.sh
 
 # zgen
 if [ ! -e "$HOME/.zgen" ]; then
