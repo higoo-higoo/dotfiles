@@ -20,7 +20,7 @@ fi
 "$SOURCE_DIR"/scripts/direnv.sh
 
 # exa
-"$SOURCE_DIR"/scripts/exa.sh
+"$SOURCE_DIR"/scripts/eza.sh
 
 # zgen
 if [ ! -e "$HOME/.zgen" ]; then
@@ -35,8 +35,3 @@ fi
 
 # lazygit
 ./scripts/lazygit.sh
-
-# brew bundle
-if [ "$(uname)" = "Darwin" ]; then
-	brew bundle --file=./.Brewfile
-fi
