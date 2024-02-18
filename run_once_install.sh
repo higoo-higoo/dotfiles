@@ -2,58 +2,19 @@
 set -xe
 
 # nodebrew
-if [ "$(uname)" = "Darwin" ]; then
-	brew install nodebrew
-	brew install shfmt
-	nodebrew setup
-# nodeがインストールされているか
-elif [ ! -e "/usr/local/bin/node" ]; then
-	sudo apt update
-	sudo apt -y install nodejs npm
-	sudo npm install n -g
-	sudo n stable
-	sudo apt -y remove nodejs npm
-fi
+./scripts/node.sh
 
 # neovim
-if [ "$(uname)" = "Darwin" ]; then
-	brew install neovim
-else
-	# sudo apt install neovim
-	sudo apt-get install ripgrep
-	sudo apt install unzip
-	sudo apt install clang-format
-	curl https://sh.rustup.rs -sSf | sh
-	cargo install stylua
-fi
-# packerがインストールされているか
-if [ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
+./scripts/nvim.sh
 
-if [ "$(uname)" = "Darwin" ]; then
-	brew install peco
-	brew install shellcheck
-else
-	wget https://github.com/peco/peco/releases/download/v0.5.10/peco_linux_amd64.tar.gz -O /tmp/peco.tar.gz
-	tar -xvf /tmp/peco.tar.gz -C /tmp/
-	mkdir -p ~/.local/bin
-	mv /tmp/peco_linux_amd64/peco ~/.local/bin/
-fi
+# peco
+./scripts/peco.sh
 
 # direnv
-if [ "$(uname)" = "Darwin" ]; then
-	brew install direnv
-else
-	sudo apt -y install direnv
-fi
+./scripts/direnv.sh
 
 # exa
-if [ "$(uname)" = "Darwin" ]; then
-	brew install exa
-else
-	sudo apt -y install exa
-fi
+./scripts/exa.sh
 
 # zgen
 if [ ! -e "$HOME/.zgen" ]; then
@@ -66,19 +27,10 @@ if [ ! -e "$HOME/.fzf" ]; then
 	~/.fzf/install --no-completion --no-key-bindings --no-update-rc
 fi
 
-# lasygit
+# lazygit
+./scripts/lazygit.sh
+
+# brew bundle
 if [ "$(uname)" = "Darwin" ]; then
-	brew install lazygit
-elif [ "$(uname -m)" = "x86_64" ]; then
-	LAZYGIT_VERSION="$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')"
-	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-	tar xf lazygit.tar.gz lazygit
-	sudo install lazygit /usr/local/bin
-	rm lazygit.tar.gz lazygit
-else
-	LAZYGIT_VERSION="$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')"
-	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_arm64.tar.gz"
-	tar xf lazygit.tar.gz lazygit
-	sudo install lazygit /usr/local/bin
-	rm lazygit.tar.gz lazygit
+	brew bundle --file=./.Brewfile
 fi

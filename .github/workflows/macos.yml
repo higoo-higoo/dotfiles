@@ -1,0 +1,17 @@
+name: macOS
+run-name: macOS
+on:
+  push:
+    branches : [ main ]
+  pull_request:
+    branches : [ main ]
+
+jobs:
+  macos:
+    name: macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run script
+        uses: ${GITHUB_WOEKSPACE}/run_once_install.sh
+
