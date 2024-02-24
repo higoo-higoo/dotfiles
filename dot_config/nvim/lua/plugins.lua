@@ -64,6 +64,12 @@ require("packer").startup(function(use)
 			require("plugins.lualine")
 		end,
 	})
+	use({
+		"simeji/winresizer",
+		config = function()
+			vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
+		end,
+	})
 
 	-- Coding
 	use("jiangmiao/auto-pairs")

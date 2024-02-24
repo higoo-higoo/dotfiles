@@ -34,4 +34,4 @@ if [ ! -e "$HOME/.fzf" ]; then
 fi
 
 # lazygit
-./scripts/lazygit.sh
+"$SOURCE_DIR"/scripts/lazygit.sh
