@@ -104,13 +104,6 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("plugins.nvim-lint")
-		end,
-	})
-
-	use({
 		"akinsho/toggleterm.nvim",
 		config = function()
 			require("plugins.toggleterm")
