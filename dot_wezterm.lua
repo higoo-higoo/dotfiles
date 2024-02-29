@@ -16,7 +16,6 @@ end
 
 -- Window:
 config.color_scheme = "3024 Night"
--- config.window_background_image = "/Users/yuki/Downloads/black-apple-wallpaper-1920x1200_6.jpg"
 config.window_background_opacity = 0.8
 wezterm.on("gui-startup", function()
 	local tab, pane, window = mux.spawn_window({})
