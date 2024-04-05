@@ -70,9 +70,19 @@ require("packer").startup(function(use)
 			vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
 		end,
 	})
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 
 	-- Coding
 	use("jiangmiao/auto-pairs")
+	use({
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	})
 	use({
 		"is0n/jaq-nvim",
 		config = function()

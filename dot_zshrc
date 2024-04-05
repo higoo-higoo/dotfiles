@@ -66,7 +66,7 @@ disable r
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # path
-PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin$PATH
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -78,6 +78,7 @@ eval "$(direnv hook zsh)"
 if [[ "$(uname)" == "Darwin" ]]; then
 	export CPLUS_INCLUDE_PATH=/opt/homebrew/include:$CPLUS_INCLUDE_PATH
 	export CPPYGEN_LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib
+	export CPPYGEN_COMPILE_FLAGS="-nostdinc $(clang++ -x c++ -v -E /dev/null 2>&1 | grep -A 100 '<...> search starts here:' | grep -B 100 'End of search list.' | gtail --lines=+2 | ghead --lines=-1 | sed 's/(framework directory)//' | sed '/^ \.$/d' | sed 's/^/-isystem/' | tr '\n' ' ')"
 	export CC=/opt/homebrew/opt/llvm/bin/clang
 	export CXX=/opt/homebrew/opt/llvm/bin/clang++
 fi
