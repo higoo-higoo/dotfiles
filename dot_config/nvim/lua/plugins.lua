@@ -83,6 +83,8 @@ require("packer").startup(function(use)
 			require("nvim-ts-autotag").setup()
 		end,
 	})
+
+	use("ray-x/go.nvim")
 	use({
 		"is0n/jaq-nvim",
 		config = function()
