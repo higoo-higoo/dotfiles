@@ -130,6 +130,13 @@ require("packer").startup(function(use)
 			require("plugins.markdown-preview")
 		end,
 	})
+	use({
+		"vinnymeller/swagger-preview.nvim",
+		run = "npm install -g swagger-ui-watcher",
+    config = function()
+      require("plugins.swagger-preview")
+    end
+	})
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
