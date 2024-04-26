@@ -47,13 +47,13 @@ require("jaq-nvim").setup({
 
 		terminal = {
 			-- Window position
-			position = "bot",
+			position = "right",
 
 			-- Window size
 			size = 10,
 
 			-- Disable line numbers
-			line_no = false,
+			line_no = true,
 		},
 
 		quickfix = {
