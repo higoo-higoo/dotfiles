@@ -15,7 +15,7 @@ end
 -- This is where you actually apply your config choices
 
 -- Window:
-config.color_scheme = "3024 Night"
+config.color_scheme = "Belge"
 config.window_background_opacity = 0.8
 wezterm.on("gui-startup", function()
 	local tab, pane, window = mux.spawn_window({})
