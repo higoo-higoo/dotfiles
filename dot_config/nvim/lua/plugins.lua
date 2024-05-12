@@ -34,6 +34,13 @@ require("packer").startup(function(use)
 	-- Git
 	use({ "tpope/vim-fugitive" })
 	use({ "airblade/vim-gitgutter" })
+	use({
+		"ruifm/gitlinker.nvim",
+		requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("plugins.gitlinker")
+    end
+	})
 	-- nvim v0.7.2
 	use({
 		"kdheepak/lazygit.nvim",
@@ -133,9 +140,9 @@ require("packer").startup(function(use)
 	use({
 		"vinnymeller/swagger-preview.nvim",
 		run = "npm install -g swagger-ui-watcher",
-    config = function()
-      require("plugins.swagger-preview")
-    end
+		config = function()
+			require("plugins.swagger-preview")
+		end,
 	})
 
 	-- LSP
