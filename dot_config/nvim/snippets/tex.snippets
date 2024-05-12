@@ -1,43 +1,45 @@
-\documentclass[a4j,11pt,dvipdfmx]{jsarticle}
-\title {2017年度第2問}
-\date {\today}
-\usepackage{listings}
-\lstset{
-  language = python,
-  frame=t,
-  numbers=left,
-  tabsize=2,
-  breaklines = true,
-  columns=fixed,
-  basewidth=0.5em,
-}
-\usepackage[margin=20truemm]{geometry}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{float}
-\usepackage{amsmath,amssymb}
-\usepackage{amsthm}
+snippet texinit
+	\documentclass[a4j,11pt,dvipdfmx]{jsarticle}
+	\title {${1:title}}
+	\author {${2:name}}
+	\date {\today}
+	\usepackage{listings}
+	\lstset{
+		language = python,
+		frame=t,
+		numbers=left,
+		tabsize=2,
+		breaklines = true,
+		columns=fixed,
+		basewidth=0.5em,
+	}
+	\usepackage[margin=20truemm]{geometry}
+	\usepackage[dvipdfmx]{graphicx}
+	\usepackage{float}
+	\usepackage{amsmath,amssymb}
+	\usepackage{amsthm}
 
-\theoremstyle{definition}
-\newtheorem{dfn}{Definition}[section]
-\newtheorem{prop}[dfn]{Proposition}
-\newtheorem{lem}[dfn]{Lemma}
-\newtheorem{thm}[dfn]{Theorem}
-\newtheorem{cor}[dfn]{Corollary}
-\newtheorem{rem}[dfn]{Remark}
-\newtheorem{fact}[dfn]{Fact}
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\usepackage{ascmac}
-\usepackage{bm}
-\usepackage{algorithmic}
-\usepackage{algorithm}
-\usepackage{fancybox}
-\usepackage{url}
-\usepackage{siunitx}
-\usepackage[enable]{easy-todo}
+	\theoremstyle{definition}
+	\newtheorem{dfn}{Definition}[section]
+	\newtheorem{prop}[dfn]{Proposition}
+	\newtheorem{lem}[dfn]{Lemma}
+	\newtheorem{thm}[dfn]{Theorem}
+	\newtheorem{cor}[dfn]{Corollary}
+	\newtheorem{rem}[dfn]{Remark}
+	\newtheorem{fact}[dfn]{Fact}
+	\renewcommand{\qedsymbol}{$\blacksquare$}
+	\usepackage{ascmac}
+	\usepackage{bm}
+	\usepackage{algorithmic}
+	\usepackage{algorithm}
+	\usepackage{fancybox}
+	\usepackage{url}
+	\usepackage{siunitx}
+	\usepackage[enable]{easy-todo}
 
-\begin{document}
-\end{document}
-\maketitle
+	\begin{document}
+	\maketitle
+	\end{document}
 
 		
 snippet beamerinit
