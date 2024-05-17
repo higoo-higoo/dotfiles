@@ -1,14 +1,10 @@
 #!/bin/sh
 set -xe
 
-if [ "$(uname)" = "Darwin" ]; then
-	brew install neovim
-else
-	sudo apt install neovim
-	sudo apt-get install ripgrep
-	sudo apt install unzip
-	sudo apt install clang-format
-fi
+git clone --depth=1 -b v0.9.0 https://github.com/neovim/neovim ~/neovim
+cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+cd - && rm -rf ~/neovim
 
 # packerがインストールされているか
 if [ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
