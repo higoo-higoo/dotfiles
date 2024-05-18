@@ -1,7 +1,6 @@
 #!/bin/sh
 set -xe
-if [ "$(uname)" = "Darwin" ]; then
-else
+if [ ! "$(uname)" = "Darwin" ]; then
   sudo apt-get -y install gettext 
 fi
 
