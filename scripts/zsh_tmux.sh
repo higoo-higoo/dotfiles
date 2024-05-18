@@ -11,7 +11,7 @@ else
   cd ~/tmux && sudo ./autogen.sh
   sudo ./configure --prefix=/usr/local
   sudo make && sudo make install
-  cd - && rm -rf ~/tmux
+  cd - && sudo rm -rf ~/tmux
 fi
 
 
