@@ -1,6 +1,12 @@
 #!/bin/sh
 set -xe
 
+
+if [ "$(lazygit --version)" ]; then
+  echo "lazygit is already installed."
+  exit 0
+fi
+
 if [ "$(uname)" = "Darwin" ]; then
 	brew install lazygit
 elif [ "$(uname -m)" = "x86_64" ]; then

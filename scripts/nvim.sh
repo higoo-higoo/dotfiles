@@ -1,5 +1,11 @@
 #!/bin/sh
 set -xe
+
+if [ "$(nvim --version)" ]; then
+  echo "nvim is already installed."
+  exit 0
+fi
+
 if [ ! "$(uname)" = "Darwin" ]; then
   sudo apt-get -y install gettext 
 fi

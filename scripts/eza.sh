@@ -1,6 +1,11 @@
 #!/bin/sh
 set -xe
 
+if [ "$(eza --version)" ]; then
+  echo "eza is already installed."
+  exit 0
+fi
+
 if [ "$(uname)" = "Darwin" ]; then
 	brew install eza
 else

@@ -1,6 +1,12 @@
 #!/bin/sh
 set -xe
 
+if [ "$(go version)" ]; then
+  echo "go is already installed."
+  exit 0
+fi
+
+
 if [ "$(uname)" = "Darwin" ]; then
   brew install go
 else

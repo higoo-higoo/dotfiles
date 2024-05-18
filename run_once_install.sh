@@ -7,8 +7,12 @@ else
 	SOURCE_DIR="$CHEZMOI_SOURCE_DIR"
 fi
 
-# zsh, tmux
-"$SOURCE_DIR"/scripts/zsh_tmux.sh
+# zsh
+"$SOURCE_DIR"/scripts/zsh.sh
+
+
+# tmux
+"$SOURCE_DIR"/scripts/tmux.sh
 
 # go
 "$SOURCE_DIR"/scripts/go.sh
@@ -29,15 +33,10 @@ fi
 "$SOURCE_DIR"/scripts/eza.sh
 
 # zgen
-if [ ! -e "$HOME/.zgen" ]; then
-	git clone https://github.com/tarjoilija/zgen.git ~/.zgen
-fi
+"$SOURCE_DIR"/scripts/zgen.sh
 
 # fzf
-if [ ! -e "$HOME/.fzf" ]; then
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install --no-completion --no-key-bindings --no-update-rc
-fi
+"$SOURCE_DIR"/scripts/fzf.sh
 
 # lazygit
 "$SOURCE_DIR"/scripts/lazygit.sh

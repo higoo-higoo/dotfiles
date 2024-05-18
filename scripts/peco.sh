@@ -1,6 +1,11 @@
 #!/bin/sh
 set -xe
 
+if [ "$(peco --version)" ]; then
+  echo "peco is already installed."
+  exit 0
+fi
+
 if [ "$(uname)" = "Darwin" ]; then
 	brew install peco
 	brew install shellcheck
