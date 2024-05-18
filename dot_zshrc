@@ -100,4 +100,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 export STEPCI_DISABLE_ANALYTICS=1
 
-source /opt/ros/humble/setup.zsh
+if [ -f /opt/ros/humble/setup.zsh ]; then
+  source /opt/ros/humble/setup.zsh
+fi

@@ -1,6 +1,6 @@
 #!/bin/sh
 set -xe
-if [ "$(zsh -V)" ]; then
+if [ "$(zsh --version)" ]; then
   echo "zsh is already installed."
   exit 0
 fi
