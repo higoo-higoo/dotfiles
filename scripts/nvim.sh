@@ -1,8 +1,11 @@
 #!/bin/sh
 set -xe
+if [ "$(uname)" = "Darwin" ]; then
+else
+  sudo apt-get -y install gettext 
+fi
 
 git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
-sudo apt-get -y install gettext
 cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd - && rm -rf ~/neovim
