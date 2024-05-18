@@ -18,6 +18,7 @@ alias ls=l
 alias la='ls -a'
 alias ll='ls -aahl'
 alias lc='clear && ls'
+ailas tmux='tmux -u'
 
 
 #zgen

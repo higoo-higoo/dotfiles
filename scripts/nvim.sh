@@ -1,7 +1,8 @@
 #!/bin/sh
 set -xe
 
-git clone --depth=1 -b v0.9.0 https://github.com/neovim/neovim ~/neovim
+git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
+sudo apt-get -y install gettext
 cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd - && rm -rf ~/neovim

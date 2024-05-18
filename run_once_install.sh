@@ -7,6 +7,12 @@ else
 	SOURCE_DIR="$CHEZMOI_SOURCE_DIR"
 fi
 
+# zsh, tmux
+"$SOURCE_DIR"/scripts/zsh_tmux.sh
+
+# go
+"$SOURCE_DIR"/scripts/go.sh
+
 # nodebrew
 "$SOURCE_DIR"/scripts/node.sh
 
