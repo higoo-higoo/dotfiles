@@ -15,16 +15,17 @@ end
 -- This is where you actually apply your config choices
 
 -- Window:
-config.color_scheme = "Belge"
-config.window_background_opacity = 0.8
+config.color_scheme = "Warm Neon"
+config.window_background_opacity = 0.85
+config.use_fancy_tab_bar = false
 wezterm.on("gui-startup", function()
 	local tab, pane, window = mux.spawn_window({})
 	window:gui_window():maximize()
 end)
 
 -- Font:
-config.font = wezterm.font("MesloLGS NF")
-config.font_size = 15.0
+config.font = wezterm.font("Source Han Code JP")
+config.font_size = 14.5
 config.use_ime = true
 
 -- KeyMap
