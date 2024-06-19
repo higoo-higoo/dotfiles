@@ -37,9 +37,9 @@ require("packer").startup(function(use)
 	use({
 		"ruifm/gitlinker.nvim",
 		requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("plugins.gitlinker")
-    end
+		config = function()
+			require("plugins.gitlinker")
+		end,
 	})
 	-- nvim v0.7.2
 	use({
@@ -77,19 +77,23 @@ require("packer").startup(function(use)
 			vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
 		end,
 	})
+
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
+    config = function ()
+      require("plugins.treesitter")
+    end
 	})
-
-	-- Coding
-	use("jiangmiao/auto-pairs")
 	use({
 		"windwp/nvim-ts-autotag",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,
 	})
+
+	-- Coding
+	use("jiangmiao/auto-pairs")
 
 	use("ray-x/go.nvim")
 	use({

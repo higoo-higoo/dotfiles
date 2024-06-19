@@ -5,6 +5,10 @@ require("conform").setup({
 		tex = { "latexindent" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
+		javascript = { "biome" },
+		typescript = { "biome" },
+		javascriptreact = { "biome" },
+		typescriptreact = { "biome" },
 	},
 })
 
