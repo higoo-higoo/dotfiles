@@ -68,7 +68,7 @@ disable r
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # path
-PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
 
 # direnv
 eval "$(direnv hook zsh)"
