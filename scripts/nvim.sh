@@ -8,6 +8,7 @@ fi
 
 if [ ! "$(uname)" = "Darwin" ]; then
   sudo apt-get -y install gettext 
+  sudo apt intsall ripgrep
 fi
 
 git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
