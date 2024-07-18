@@ -21,6 +21,11 @@ alias lc='clear && ls'
 alias tmux='tmux -u'
 alias notify='terminal-notifier -title "Done" -message "Command finished"'
 
+function custom_cd()
+{
+    \cd $@ && clear && pwd && ls
+}
+alias c='custom_cd'
 
 #zgen
 source "${HOME}/.zgen/zgen.zsh"
@@ -68,7 +73,7 @@ disable r
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # path
-PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -104,6 +109,8 @@ export STEPCI_DISABLE_ANALYTICS=1
 if [ -f /opt/ros/humble/setup.zsh ]; then
   source /opt/ros/humble/setup.zsh
 fi
+
+export LIBGL_ALWAYS_INDIRECT=1
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
