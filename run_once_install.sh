@@ -40,3 +40,6 @@ fi
 
 # lazygit
 "$SOURCE_DIR"/scripts/lazygit.sh
+
+# chmod
+"$SOURCE_DIR"/scripts/add_write_to_read_only.sh
