@@ -1,5 +1,5 @@
-name: linux
-run-name: linux
+name: macOS
+run-name: macOS
 on:
   push:
     branches : [ main ]
@@ -8,8 +8,8 @@ on:
 
 jobs:
   macos:
-    name: linux
-    runs-on: ubuntu-latest
+    name: macOS
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run script

@@ -10,7 +10,7 @@ brew install chezmoi // mac
 ## chezmoi init
 
 ```shell
-chezmoi init git@github.com:yumeoinchu/dotfiles.git
+chezmoi init git@github.com:higoo-higoo/dotfiles.git
 ```
 
 ## chsh
