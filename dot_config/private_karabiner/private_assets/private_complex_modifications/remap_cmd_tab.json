@@ -1,0 +1,43 @@
+{
+    "title": "remap cmd tab",
+    "rules": [
+        {
+            "description": "remap cmd tab",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                      "key_code": "tab",
+                      "modifiers": {
+                        "mandatory": [
+                          "left_control"
+                        ],
+                        "optional": [
+                          "shift"
+                        ]
+                      }
+                    },
+                    "to": [
+                      {
+                        "key_code": "tab",
+                        "modifiers": [
+                          "left_command"
+                        ]
+                      }
+                    ],
+                    "conditions": [
+                      {
+                        "name": "Application Tab",
+                        "type": "frontmost_application_unless",
+                        "bundle_identifiers": [
+                          "^com\\.apple\\.(.*)$",
+                          "^org\\.gnu\\.(.*)$",
+                          "^com\\.karabiner\\.(.*)$"
+                        ]
+                      }
+                    ]
+}
+            ]
+          }
+    ]
+}

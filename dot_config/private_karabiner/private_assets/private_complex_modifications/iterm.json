@@ -1,0 +1,70 @@
+{
+    "title": "iTerm settings",
+    "rules": [
+        {
+            "description": "left_control to left_command(without iTerm/IntelliJ)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_control",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_command"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_unless",
+                            "bundle_identifiers": [
+                                "^com\\.googlecode\\.iterm2",
+                                "^com\\.jetbrains\\.intellij"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "opt+ctrl+tab to opt+cmd+tab(iTerm/IntelliJ only)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "tab",
+                        "modifiers": {
+                            "mandatory": [
+                                "option",
+                                "control"
+                            ],
+                            "optional": [
+                                "shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "tab",
+                            "modifiers": ["option", "command"]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.googlecode\\.iterm2",
+                                "^com\\.jetbrains\\.intellij"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }        
+    ]
+}
