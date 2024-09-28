@@ -9,9 +9,14 @@ fi
 if [ ! "$(uname)" = "Darwin" ]; then
   sudo apt-get -y install gettext 
   sudo apt install ripgrep
+  brew install cmake
+  brew install llvm
 fi
 
-git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
+if [ ! -d "$HOME/neovim" ]; then
+  git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
+fi
+
 cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd - && rm -rf ~/neovim
