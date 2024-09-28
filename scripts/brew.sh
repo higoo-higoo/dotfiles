@@ -2,6 +2,7 @@
 set -xe
 
 if [ "$(uname)" = "Darwin" ]; then
-  brew bundle --file="$HOME/.Brewfile"
+  SOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
+  brew bundle --file="$SOURCE_DIR/../dot_Brewfile"
 fi
 
