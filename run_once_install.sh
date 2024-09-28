@@ -7,9 +7,11 @@ else
 	SOURCE_DIR="$CHEZMOI_SOURCE_DIR"
 fi
 
+# brew
+"$SOURCE_DIR"/scripts/brew.sh
+
 # zsh
 "$SOURCE_DIR"/scripts/zsh.sh
-
 
 # tmux
 "$SOURCE_DIR"/scripts/tmux.sh
