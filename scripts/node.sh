@@ -11,6 +11,9 @@ fi
 if [ "$(uname)" = "Darwin" ]; then
 	brew install nodebrew
 	nodebrew setup
+  nodebrew install stable
+  nodebrew use latest
+  npm install -g npm
 # nodeがインストールされているか
 else
 	sudo apt update
