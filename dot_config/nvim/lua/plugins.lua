@@ -122,6 +122,7 @@ require("packer").startup(function(use)
 	})
 	use({
 		"stevearc/conform.nvim",
+    tag = "v7.1.0",
 		config = function()
 			require("plugins.conform")
 		end,

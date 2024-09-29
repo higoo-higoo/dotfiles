@@ -6,20 +6,22 @@ if [ "$(nvim --version)" ]; then
   exit 0
 fi
 
-if [ ! "$(uname)" = "Darwin" ]; then
-  sudo apt-get -y install gettext 
-  sudo apt install ripgrep
+if [ "$(uname)" = "Darwin" ]; then
   brew install cmake
   brew install llvm
+  brew install curl
+  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-macos.tar.gz
+  xattr -c "$HOME/neovim.tar.gz"
+else
+  sudo apt-get -y install gettext 
+  sudo apt install ripgrep
+  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux.tar.gz
 fi
 
-if [ ! -d "$HOME/neovim" ]; then
-  git clone --depth=1 -b v0.9.2 https://github.com/neovim/neovim ~/neovim
-fi
-
-cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-cd - && rm -rf ~/neovim
+mkdir -p "$HOME/neovim"
+tar xzvf "$HOME/neovim.tar.gz" -C "$HOME/neovim" --strip-components=1
+sudo mv "$HOME/neovim/bin/nvim" "/usr/local/bin/nvim"
+rm -rf "$HOME/neovim.tar.gz" "$HOME/neovim"
 
 # packerがインストールされているか
 if [ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then

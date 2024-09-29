@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"texlab",
 		"clangd",
+    "bash-language-server",
 	},
 })
 require("mason-lspconfig").setup_handlers({
