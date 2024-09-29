@@ -7,15 +7,14 @@ if [ "$(nvim --version)" ]; then
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
-  brew install cmake
-  brew install llvm
   brew install curl
+  brew install ripgrep
   curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-macos.tar.gz
   xattr -c "$HOME/neovim.tar.gz"
 else
   sudo apt-get -y install gettext 
   sudo apt install ripgrep
-  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux.tar.gz
+  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
 fi
 
 mkdir -p "$HOME/neovim"
