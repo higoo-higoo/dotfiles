@@ -20,8 +20,9 @@ fi
 mkdir -p "$HOME/neovim"
 tar xzvf "$HOME/neovim.tar.gz" -C "$HOME/neovim" --strip-components=1
 sudo mv "$HOME/neovim/bin/nvim" "/usr/local/bin/nvim"
-sudo mv "$HOME/neovim/share/nvim" "/usr/local/share/nvim"
-sudo mv "$HOME/neovim/lib/nvim" "/usr/local/lib/nvim"
+sudo rm -r "/usr/local/share/nvim" "/usr/local/lib/nvim"
+sudo mv "$HOME/neovim/share/nvim" "/usr/local/share/"
+sudo mv "$HOME/neovim/lib/nvim" "/usr/local/lib/"
 rm -rf "$HOME/neovim.tar.gz" "$HOME/neovim"
 
 # packerがインストールされているか
