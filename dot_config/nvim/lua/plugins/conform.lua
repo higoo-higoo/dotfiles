@@ -1,3 +1,4 @@
+local web_formatter = { "biome", args = { "check", "--apply", "--stdin-file-path", "$FILENAME" } }
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -5,10 +6,10 @@ require("conform").setup({
 		tex = { "latexindent" },
 		cpp = { "clang-format" },
 		sh = { "shfmt" },
-		javascript = { "biome" },
-		typescript = { "biome" },
-		javascriptreact = { "biome" },
-		typescriptreact = { "biome" },
+		javascript = web_formatter,
+		typescript = web_formatter,
+		javascriptreact = web_formatter,
+		typescriptreact = web_formatter,
 	},
 })
 

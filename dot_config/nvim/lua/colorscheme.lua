@@ -1,6 +1,8 @@
 vim.cmd([[
 try
-	colorscheme gruvbox
+  colorscheme dracula
+  " colorscheme gruvbox
+  hi NvimTreeNormal guibg=NONE ctermbg=NONE
 	highlight Normal ctermbg=NONE guibg=NONE
 	highlight NonText ctermbg=NONE guibg=NONE
 	highlight LineNr ctermbg=NONE guibg=NONE

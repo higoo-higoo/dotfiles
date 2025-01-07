@@ -1,6 +1,8 @@
 require("bufferline").setup({
 	options = {
 		globalstatus = true,
+    -- themable = true,
+    -- theme = "dracula"
 	},
 })
 

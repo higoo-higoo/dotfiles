@@ -21,7 +21,6 @@ alias lc='clear && ls'
 alias tmux='tmux -u'
 alias notify='terminal-notifier -title "Done" -message "Command finished"'
 
-
 #zgen
 source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
@@ -32,7 +31,8 @@ if ! zgen saved; then
 	# ハイライト
 	zgen load zsh-users/fast-syntax-highlighting
 	# みため
-	zgen load romkatv/powerlevel10k powerlevel10k 
+	zgen load dracula/zshzgen
+  zgen load romkatv/powerlevel10k powerlevel10k
 	# 保存
 	zgen save
 fi
@@ -68,7 +68,7 @@ disable r
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # path
-export PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$HOME/go/bin:$HOME/.nodebrew/current/bin:$PATH
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -99,11 +99,31 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+    . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 export STEPCI_DISABLE_ANALYTICS=1
 
 if [ -f /opt/ros/humble/setup.zsh ]; then
   source /opt/ros/humble/setup.zsh
 fi
+
+export LIBGL_ALWAYS_INDIRECT=1
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
@@ -117,3 +137,27 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+export PATH=$HOME/.gem/bin:$HOME/development/flutter/bin:$PATH
+
+# Codon compiler path (added by install script)
+export PATH=/Users/yuki/.codon/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+    . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+

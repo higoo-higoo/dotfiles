@@ -8,19 +8,87 @@ vim.cmd([[packadd packer.nvim]])
 
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
-	-- File Explorer
+	-- use({ "morhetz/gruvbox" })
+	-- use({
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	config = function()
+	-- 		require("plugins.kanagawa")
+	-- 	end,
+	-- })
 	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		"Mofiqul/dracula.nvim",
 		config = function()
-			require("plugins.telescope")
+      require("plugins.dracula")
+		end,
+	})
+	-- use({
+	-- 	"navarasu/onedark.nvim",
+	-- 	config = function()
+	-- 		require("plugins.onedark")
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"catppuccin/nvim",
+	-- 	as = "catppuccin",
+	-- 	config = function()
+	-- 		require("plugins.catppuccin")
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"folke/tokyonight.nvim",
+	-- 	config = function()
+	-- 		require("plugins.tokyonight")
+	-- 	end,
+	-- })
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("plugins.bufferline")
 		end,
 	})
 	use({
-		"nvim-telescope/telescope-frecency.nvim",
+		"nvim-lualine/lualine.nvim",
+		requires = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		config = function()
-			require("telescope").load_extension("frecency")
+			require("plugins.lualine")
+		end,
+	})
+	use({
+		"simeji/winresizer",
+		config = function()
+			vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
+		end,
+	})
+
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function()
+			require("plugins.treesitter")
+		end,
+	})
+	use({
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	})
+	use({
+		"gen740/SmoothCursor.nvim",
+		config = function()
+			require("smoothcursor").setup()
+		end,
+	})
+	-- File Explorer
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("plugins.telescope")
 		end,
 	})
 	use({
@@ -52,50 +120,31 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- Appearence
-	use({ "morhetz/gruvbox" })
-	use({
-		"akinsho/bufferline.nvim",
-		tag = "*",
-		requires = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("plugins.bufferline")
-		end,
-	})
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("plugins.lualine")
-		end,
-	})
-	use({
-		"simeji/winresizer",
-		config = function()
-			vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
-		end,
-	})
 
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-    config = function ()
-      require("plugins.treesitter")
-    end
-	})
-	use({
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	})
+
 
 	-- Coding
 	use("jiangmiao/auto-pairs")
 
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
+
 	use("ray-x/go.nvim")
+	use({
+		"nvim-flutter/flutter-tools.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		config = function()
+			require("plugins.flutter-tools")
+		end,
+	})
 	use({
 		"is0n/jaq-nvim",
 		config = function()
@@ -122,7 +171,7 @@ require("packer").startup(function(use)
 	})
 	use({
 		"stevearc/conform.nvim",
-    tag = "v7.1.0",
+		tag = "v7.1.0",
 		config = function()
 			require("plugins.conform")
 		end,
