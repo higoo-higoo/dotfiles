@@ -9,7 +9,7 @@ fi
 if [ "$(uname)" = "Darwin" ]; then
   brew install curl
   brew install ripgrep
-  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-macos.tar.gz
+  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
   xattr -c "$HOME/neovim.tar.gz"
 else
   sudo apt-get -y install gettext 
