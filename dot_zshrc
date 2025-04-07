@@ -19,7 +19,8 @@ alias la='ls -a'
 alias ll='ls -aahl'
 alias lc='clear && ls'
 alias tmux='tmux -u'
-alias notify='terminal-notifier -title "Done" -message "Command finished"'
+alias cat='ccat'
+alias notify='terminal-notifier -title "Done" -message "Command finished" -sound default'
 
 #zgen
 source "${HOME}/.zgen/zgen.zsh"
@@ -31,8 +32,8 @@ if ! zgen saved; then
 	# ハイライト
 	zgen load zsh-users/fast-syntax-highlighting
 	# みため
-	zgen load dracula/zshzgen
-  zgen load romkatv/powerlevel10k powerlevel10k
+	# zgen load dracula/zsh
+  zgen load dracula/powerlevel10k powerlevel10k 
 	# 保存
 	zgen save
 fi
@@ -160,4 +161,4 @@ if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
     . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
