@@ -18,7 +18,7 @@ require("packer").startup(function(use)
 	use({
 		"Mofiqul/dracula.nvim",
 		config = function()
-      require("plugins.dracula")
+			require("plugins.dracula")
 		end,
 	})
 	-- use({
@@ -120,12 +120,15 @@ require("packer").startup(function(use)
 		end,
 	})
 
-
-
-
 	-- Coding
 	use("jiangmiao/auto-pairs")
 
+  use({
+    "hat0uma/csvview.nvim",
+    config = function()
+      require("csvview").setup()
+    end,
+  })
 	use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -133,7 +136,100 @@ require("packer").startup(function(use)
 			require("nvim-surround").setup({})
 		end,
 	})
-
+	-- use({
+	-- 	"dccsillag/magma-nvim",
+	-- 	run = ":UpdateRemotePlugins",
+	-- 	config = function()
+	-- 		require("plugins.magma-nvim")
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"GCBallesteros/jupytext.nvim",
+	-- 	-- packer では lazy.nvim のように lazy = false というオプションはないので
+	-- 	-- 必ず読み込む場合は特に何も書かないか、"event", "cmd", "ft", "setup" などを省略します。
+	-- 	config = function()
+	-- 		-- プラグインのデフォルト設定を上書きしたい場合に書く
+	-- 		require("jupytext").setup({})
+	-- 	end,
+	-- 	-- ファイルタイプが ipynb のときだけ読み込ませたい場合は以下のように書く
+	-- 	-- ft = { "ipynb" },
+	-- })
+	--
+	-- ------------------------------------------------------------
+	-- -- 2) NotebookNavigator.nvim & molten + image.nvim
+	-- ------------------------------------------------------------
+	-- use({
+	-- 	"GCBallesteros/NotebookNavigator.nvim",
+	-- 	event = "VimEnter",
+	-- 	-- NotebookNavigator.nvim の設定
+	-- 	config = function()
+	-- 		-- プラグインのセットアップ
+	-- 		local nn = require("notebook-navigator")
+	-- 		nn.setup({
+	-- 			activate_hydra_keys = "<leader>y",
+	-- 			repl_provider = "molten",
+	-- 		})
+	--
+	-- 		-- lazy.nvim での keys 設定は packer にはないので、自分でキー設定
+	-- 		-- 例: vim.keymap.set("n", "]h", ...)
+	-- 		vim.keymap.set("n", "]h", function()
+	-- 			require("notebook-navigator").move_cell("d")
+	-- 		end)
+	--
+	-- 		vim.keymap.set("n", "[h", function()
+	-- 			require("notebook-navigator").move_cell("u")
+	-- 		end)
+	--
+	-- 		vim.keymap.set("n", "<leader>rc", function()
+	-- 			require("notebook-navigator").run_cell()
+	-- 		end)
+	--
+	-- 		vim.keymap.set("n", "<leader>rm", function()
+	-- 			require("notebook-navigator").run_and_move()
+	-- 		end)
+	-- 	end,
+	-- 	requires = {
+	-- 		"echasnovski/mini.comment",
+	-- 		"anuvyklack/hydra.nvim",
+	--
+	-- 		----------------------------------------------------------------
+	-- 		-- molten + image.nvim
+	-- 		----------------------------------------------------------------
+	-- 		{
+	-- 			"benlubas/molten-nvim",
+	-- 			-- packer でバージョン固定をする場合は tag または branch を使うことが多いです
+	-- 			-- ただし npm パッケージ等のように semver がネイティブに扱われているわけではないので注意
+	-- 			-- "version = '^1.0.0'" は lazy.nvim での書き方
+	-- 			-- packer 側では "tag = 'v1.0.0'" などで近いことはできます
+	-- 			-- ここでは例として最初に見つかったタグを指定しておきます
+	-- 			tag = "v1.9.2",
+	-- 			run = ":UpdateRemotePlugins", -- molten が要求しているコマンド
+	-- 			setup = function()
+	-- 				-- plugin 読み込み前に実行される (lazy.nvim の init に相当)
+	-- 				vim.g.molten_image_provider = "image.nvim"
+	-- 				vim.g.molten_output_win_max_height = 500
+	-- 			end,
+	-- 			requires = {
+	-- 				{
+	-- 					"3rd/image.nvim",
+	-- 					config = function()
+	-- 						-- plugin 読み込み後に実行される
+	-- 						require("image").setup({
+	-- 							backend = "kitty",
+	-- 							max_width = 500,
+	-- 							max_height = 500,
+	-- 							max_height_window_percentage = math.huge,
+	-- 							max_width_window_percentage = math.huge,
+	-- 							window_overlap_clear_enabled = true,
+	-- 							window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+	-- 						})
+	-- 					end,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- })
+	--
 	use("ray-x/go.nvim")
 	use({
 		"nvim-flutter/flutter-tools.nvim",

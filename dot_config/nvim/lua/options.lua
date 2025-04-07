@@ -33,3 +33,6 @@ vim.opt.backup = false -- Don't Save Back Up
 vim.cmd([[ filetype plugin indent on ]])
 vim.g.tex_flavor = "latex"
 vim.cmd([[set path+=/use/local/bin]])
+
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"

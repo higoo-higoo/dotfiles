@@ -11,12 +11,13 @@ local config = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+enable_kitty_graphics=true
 
 -- This is where you actually apply your config choices
 
 -- Window:
 config.color_scheme = "Dracula"
-config.window_background_opacity = 0.83
+config.window_background_opacity = 0.825
 config.use_fancy_tab_bar = false
 wezterm.on("gui-startup", function()
 	local tab, pane, window = mux.spawn_window({})
@@ -24,8 +25,8 @@ wezterm.on("gui-startup", function()
 end)
 
 -- Font:
-config.font = wezterm.font("Source Han Code JP")
-config.font_size = 14.0
+config.font = wezterm.font("Cica")
+config.font_size = 18
 config.use_ime = true
 
 -- KeyMap
