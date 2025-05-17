@@ -7,20 +7,44 @@ require("mason-lspconfig").setup({
     "bashls",
 	},
 })
-require("mason-lspconfig").setup_handlers({
-	function(server)
-		local opt = {
-			-- -- Function executed when the LSP server startup
-			-- on_attach = function(client, bufnr)
-			--	 local opts = { noremap=true, silent=true }
-			--	 vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-			--	 vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
-			-- end,
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-		}
-		require("lspconfig")[server].setup(opt)
-	end,
-})
+-- ~/.config/nvim/lua/plugins/lspconfig.lua
+
+-- 1) common on_attach / capabilities
+local on_attach = function(client, bufnr)
+  local opts = { noremap = true, silent = true }
+  -- hover
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- format on save
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,
+    callback = function() vim.lsp.buf.format({ timeout_ms = 1000 }) end,
+  })
+end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+-- 2) mason + mason-lspconfig setup
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    -- put here the servers you want Mason to install for you
+    "lua_ls",
+    "pyright",
+    "ts_ls",
+  },
+  -- servers installed via Mason will be enabled automatically
+  automatic_enable = true,
+}
+
+-- 3) Explicitly configure each LSP with lspconfig
+local servers = { "lua_ls", "pyright", "ts_ls" }
+for _, srv in ipairs(servers) do
+  require("lspconfig")[srv].setup {
+    on_attach    = on_attach,
+    capabilities = capabilities,
+    -- …any other server-specific settings…
+  }
+end
 --[[
 local lspconfig = require("lspconfig")
 local cmd = { "clangd", "--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++" }
