@@ -137,22 +137,79 @@ require("packer").startup(function(use)
     end,
   })
   use({
-    "dccsillag/magma-nvim",
-    run = ":UpdateRemotePlugins",
+    "GCBallesteros/jupytext.nvim",
     config = function()
-      require("plugins.magma-nvim")
+      require("jupytext").setup()
     end,
   })
+
+  -- NotebookNavigator & Molten (Jupyter notebook-style cell execution)
   use({
-    "GCBallesteros/jupytext.nvim",
-    -- packer では lazy.nvim のように lazy = false というオプションはないので
-    -- 必ず読み込む場合は特に何も書かないか、"event", "cmd", "ft", "setup" などを省略します。
+    "GCBallesteros/NotebookNavigator.nvim",
+    requires = {
+      "echasnovski/mini.comment",
+      "anuvyklack/hydra.nvim",
+      {
+        "benlubas/molten-nvim",
+        tag = "v1.*",
+        run = ":UpdateRemotePlugins",
+        requires = {
+          {
+            "3rd/image.nvim",
+            config = function()
+              require("image").setup({
+                backend = "kitty",
+                max_width = 500,
+                max_height = 500,
+                max_height_window_percentage = math.huge,
+                max_width_window_percentage = math.huge,
+                window_overlap_clear_enabled = true,
+                window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+              })
+            end,
+          },
+        },
+        config = function()
+          vim.g.molten_image_provider = "image.nvim"
+          vim.g.molten_output_win_max_height = 500
+          -- vim.g.molten_auto_open_output = true
+          -- vim.g.molten_virt_text_output = true
+          -- vim.g.molten_virt_lines_off_by_1 = true
+        end,
+      },
+    },
     config = function()
-      -- プラグインのデフォルト設定を上書きしたい場合に書く
-      require("jupytext").setup({})
+      require("notebook-navigator").setup({
+        -- activate_hydra_keys = "<leader>m",
+        repl_provider = "molten",
+      })
+
+      -- key mappings
+      vim.api.nvim_set_keymap(
+        "n",
+        "]h",
+        "<cmd>lua require('notebook-navigator').move_cell('d')<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "[h",
+        "<cmd>lua require('notebook-navigator').move_cell('u')<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>rc",
+        "<cmd>lua require('notebook-navigator').run_cell()<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>rm",
+        "<cmd>lua require('notebook-navigator').run_and_move()<cr>",
+        { noremap = true, silent = true }
+      )
     end,
-    -- ファイルタイプが ipynb のときだけ読み込ませたい場合は以下のように書く
-    -- ft = { "ipynb" },
   })
   use({
     "olimorris/codecompanion.nvim",

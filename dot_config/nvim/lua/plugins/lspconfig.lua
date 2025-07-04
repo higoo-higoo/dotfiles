@@ -1,11 +1,11 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {
-		"pyright",
-		"texlab",
-		"clangd",
+  ensure_installed = {
+    "pyright",
+    "texlab",
+    "clangd",
     "bashls",
-	},
+  },
 })
 -- ~/.config/nvim/lua/plugins/lspconfig.lua
 
@@ -17,15 +17,28 @@ local on_attach = function(client, bufnr)
   -- format on save
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = bufnr,
-    callback = function() vim.lsp.buf.format({ timeout_ms = 1000 }) end,
+    callback = function()
+      vim.lsp.buf.format({ timeout_ms = 1000 })
+    end,
   })
 end
+
+require("lspconfig").matlab_ls.setup({
+  settings = {
+    MATLAB = {
+      installPath = "/Applications/MATLAB_R2025a.app", -- ←必ず設定する
+      indexWorkspace = true,
+      matlabConnectionTiming = "onStart",
+      telemetry = false,
+    },
+  },
+})
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- 2) mason + mason-lspconfig setup
 require("mason").setup()
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
   ensure_installed = {
     -- put here the servers you want Mason to install for you
     "lua_ls",
@@ -34,16 +47,16 @@ require("mason-lspconfig").setup {
   },
   -- servers installed via Mason will be enabled automatically
   automatic_enable = true,
-}
+})
 
 -- 3) Explicitly configure each LSP with lspconfig
 local servers = { "lua_ls", "pyright", "ts_ls" }
 for _, srv in ipairs(servers) do
-  require("lspconfig")[srv].setup {
-    on_attach    = on_attach,
+  require("lspconfig")[srv].setup({
+    on_attach = on_attach,
     capabilities = capabilities,
     -- …any other server-specific settings…
-  }
+  })
 end
 --[[
 local lspconfig = require("lspconfig")
@@ -70,29 +83,29 @@ vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("snippy").expand_snippet(args.body)
-		end,
-	},
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "snippy" },
-		{ name = "path" },
-	}, {
-		{ name = "buffer" },
-		-- { name = "cmdline" },
-	}),
-	mapping = cmp.mapping.preset.insert({
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
-		["<Tab>"] = cmp.mapping.select_next_item(),
-		["<C-c>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	}),
-	window = {
-		completion = {
-			border = "rounded",
-			winhighlight = "Normal:CmpNormal",
-		},
-	},
+  snippet = {
+    expand = function(args)
+      require("snippy").expand_snippet(args.body)
+    end,
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "snippy" },
+    { name = "path" },
+  }, {
+    { name = "buffer" },
+    -- { name = "cmdline" },
+  }),
+  mapping = cmp.mapping.preset.insert({
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<C-c>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
+  window = {
+    completion = {
+      border = "rounded",
+      winhighlight = "Normal:CmpNormal",
+    },
+  },
 })

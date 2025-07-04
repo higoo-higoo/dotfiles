@@ -162,3 +162,7 @@ if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+export PATH=$PATH:/usr/local/texlive/2025/bin/universal-darwin:$HOME/Documents/MATLAB/mosek/11.0/tools/platform/osxaarch64/bin/
+
+alias matlab='/Applications/MATLAB_R2025a.app/bin/matlab'
+
