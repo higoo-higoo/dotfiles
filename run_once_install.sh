@@ -46,5 +46,3 @@ fi
 
 # setting
 "$SOURCE_DIR"/scripts/setting.sh
-
-sudo reboot
