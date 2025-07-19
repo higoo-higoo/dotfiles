@@ -18,6 +18,9 @@ else
 fi
 
 mkdir -p "$HOME/neovim"
+sudo mkdir -p /usr/local/bin
+sudo mkdir -p /usr/local/lib
+sudo mkdir -p /usr/local/share
 tar xzvf "$HOME/neovim.tar.gz" -C "$HOME/neovim" --strip-components=1
 sudo mv "$HOME/neovim/bin/nvim" "/usr/local/bin/nvim"
 sudo rm -r "/usr/local/share/nvim" "/usr/local/lib/nvim" | exit 0

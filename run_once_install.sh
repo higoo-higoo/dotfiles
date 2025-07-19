@@ -7,6 +7,7 @@ else
 	SOURCE_DIR="$CHEZMOI_SOURCE_DIR"
 fi
 
+
 # brew
 "$SOURCE_DIR"/scripts/brew.sh
 
@@ -42,3 +43,8 @@ fi
 
 # lazygit
 "$SOURCE_DIR"/scripts/lazygit.sh
+
+# setting
+"$SOURCE_DIR"/scripts/setting.sh
+
+sudo reboot

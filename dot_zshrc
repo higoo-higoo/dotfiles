@@ -32,8 +32,7 @@ if ! zgen saved; then
 	# ハイライト
 	zgen load zsh-users/fast-syntax-highlighting
 	# みため
-	# zgen load dracula/zsh
-  zgen load dracula/powerlevel10k powerlevel10k 
+  zgen load romkatv/powerlevel10k powerlevel10k
 	# 保存
 	zgen save
 fi
@@ -69,7 +68,7 @@ disable r
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # path
-PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
+PATH=/bin:/opt/homebrew/bin:$HOME/bin:$HOME/mycommands:$HOME/.cargo/bin:/usr/local/bin:$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.nodebrew/current/bin
 
 # direnv
 eval "$(direnv hook zsh)"
