@@ -2,10 +2,12 @@
 set -xe
 
 # Dock setting
-defaults write com.apple.dock persistent-apps -array
-defaults write com.apple.dock appswitcher-all-displays -bool true
-defaults write com.apple.dock autohide -bool true
-killall Dock
+if [ "$(uname)" = "Darwin" ]; then
+  defaults write com.apple.dock persistent-apps -array
+  defaults write com.apple.dock appswitcher-all-displays -bool true
+  defaults write com.apple.dock autohide -bool true
+  killall Dock
+fi
 
 # Font setting
 mkdir -p /tmp/cica && cd /tmp/cica
