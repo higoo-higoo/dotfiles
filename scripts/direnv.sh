@@ -7,9 +7,8 @@ if [ "$(direnv version)" ]; then
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
-	brew install direnv
+  brew install direnv
 else
-	sudo apt -y install direnv
+  curl -L https://github.com/direnv/direnv/releases/download/v2.37.0/direnv.linux-amd64 -o /usr/local/bin/direnv
+  chmod 755 /usr/local/bin/direnv
 fi
-
-
