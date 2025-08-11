@@ -16,7 +16,7 @@ if [ "$(uname)" = "Darwin" ]; then
 else
   sudo apt-get -y install gettext
   sudo apt install ripgrep
-  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
+  curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
 fi
 
 mkdir -p "$HOME/neovim"

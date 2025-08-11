@@ -27,7 +27,7 @@ fi
 "$SOURCE_DIR"/scripts/nvim.sh
 
 # peco
-"$SOURCE_DIR"/scripts/peco.sh
+"$SOURCE_DIR"/scripts/peco_ghq.sh
 
 # direnv
 "$SOURCE_DIR"/scripts/direnv.sh
