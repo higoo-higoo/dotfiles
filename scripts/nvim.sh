@@ -36,7 +36,7 @@ if [ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
 fi
 
 # texlabのformatに必要なモジュールをダウンロード
-if [ "$(cpanm)" ]; then
+if [ ! "$(cpanm)" ]; then
   curl -L https://cpanmin.us | perl - --sudo App::cpanminus
 fi
 
