@@ -9,6 +9,8 @@ fi
 if [ "$(uname)" = "Darwin" ]; then
   brew install curl
   brew install ripgrep
+  brew install imagemagick
+  brew install snaipe/taps/lua@5.1
   curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
   xattr -c "$HOME/neovim.tar.gz"
 else
@@ -32,3 +34,10 @@ rm -rf "$HOME/neovim.tar.gz" "$HOME/neovim"
 if [ ! -e "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
   git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
+
+# texlabのformatに必要なモジュールをダウンロード
+if [ "$(cpanm)" ]; then
+  curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+fi
+
+cpanm YAML::Tiny

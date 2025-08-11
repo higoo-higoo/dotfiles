@@ -49,6 +49,10 @@ require("packer").startup(function(use)
     end,
   })
   use({
+    "skanehira/denops-silicon.vim",
+    requires = "vim-denops/denops.vim",
+  })
+  use({
     "nvim-lualine/lualine.nvim",
     requires = {
       "nvim-tree/nvim-web-devicons",
@@ -62,6 +66,14 @@ require("packer").startup(function(use)
     config = function()
       vim.keymap.set("n", "<Leader>w", "<Cmd>WinResizerStartResize<CR>", {})
     end,
+  })
+
+  use({
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
   })
 
   use({
@@ -120,8 +132,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  -- Coding
-  use("jiangmiao/auto-pairs")
 
   use({
     "hat0uma/csvview.nvim",
@@ -254,7 +264,6 @@ require("packer").startup(function(use)
   })
   use({
     "stevearc/conform.nvim",
-    tag = "v7.1.0",
     config = function()
       require("plugins.conform")
     end,
@@ -267,9 +276,12 @@ require("packer").startup(function(use)
   })
   use({
     "iamcco/markdown-preview.nvim",
-    run = function()
-      vim.fn["mkdp#util#install"]()
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = {
+        "markdown" }
     end,
+    ft = { "markdown" },
     config = function()
       require("plugins.markdown-preview")
     end,
