@@ -10,7 +10,7 @@ if [ "$(uname)" = "Darwin" ]; then
   brew install curl
   brew install ripgrep
   brew install imagemagick
-  brew install snaipe/taps/lua@5.1
+  # brew install snaipe/taps/lua@5.1
   curl -Lo "$HOME/neovim.tar.gz" https://github.com/neovim/neovim/releases/download/stable/nvim-macos-arm64.tar.gz
   xattr -c "$HOME/neovim.tar.gz"
 else
