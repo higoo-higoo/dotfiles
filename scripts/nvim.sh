@@ -38,6 +38,8 @@ fi
 # texlabのformatに必要なモジュールをダウンロード
 if [ ! "$(cpanm)" ]; then
   curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+  export PATH="$PATH:/usr/local/bin"
 fi
+
 
 cpanm YAML::Tiny
