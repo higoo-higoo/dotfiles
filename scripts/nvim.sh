@@ -37,9 +37,13 @@ fi
 
 # texlabのformatに必要なモジュールをダウンロード
 if [ ! "$(cpanm)" ]; then
-  curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+  if [ "$(uname)" = "Darwin" ]; then
+    brew install cpanminus
+  else
+    sudo apt-get -y install perl
+    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
   export PATH="$PATH:/usr/local/bin"
+  fi
 fi
 
-
-cpanm YAML::Tiny
+sudo cpanm YAML::Tiny
