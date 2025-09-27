@@ -25,8 +25,8 @@ wezterm.on("gui-startup", function()
 end)
 
 -- Font:
-config.font = wezterm.font("Cica")
-config.font_size = 16
+config.font = wezterm.font("PlemolJP Console NF")
+config.font_size = 13
 config.use_ime = true
 
 -- KeyMap
