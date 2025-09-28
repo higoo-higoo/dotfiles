@@ -269,12 +269,6 @@ require("packer").startup(function(use)
     end,
   })
   use({
-    "akinsho/toggleterm.nvim",
-    config = function()
-      require("plugins.toggleterm")
-    end,
-  })
-  use({
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     setup = function()
