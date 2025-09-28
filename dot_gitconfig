@@ -1,0 +1,21 @@
+[user]
+  name = higoo-higoo
+  email = higyuki1101@gmail.com
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[delta]
+  width = variable
+  true-color = always
+  dark = true
+  light = false
+  features = "side-by-side line-numbers"
+  syntax-theme = Dracula
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+  wrap = true
+[core]
+	editor = nvim
