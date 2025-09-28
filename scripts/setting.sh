@@ -13,7 +13,8 @@ else
   curl -L -o Plemol.zip https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_NF_v3.0.0.zip
   unzip Plemol.zip
   mkdir -p ~/.local/share/fonts
-  cp -v ./*.ttf ~/.local/share/fonts/
+  cp -v ./**/*.ttf ~/.local/share/fonts/
   fc-cache -fv
+  cd - && rm -rf /tmp/plemol
 fi
 
