@@ -1,4 +1,4 @@
-dot_config/plugin/*
+dot_config/nvim/plugin/*
 scripts/*
 README.md
 setting/*

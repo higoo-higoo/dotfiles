@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
   })
 end
 
-require("lspconfig").matlab_ls.setup({
+vim.lsp.config('matlab_ls', {
   settings = {
     MATLAB = {
       installPath = "/Applications/MATLAB_R2025a.app", -- ←必ず設定する
@@ -52,7 +52,7 @@ require("mason-lspconfig").setup({
 -- 3) Explicitly configure each LSP with lspconfig
 local servers = { "lua_ls", "pyright", "ts_ls" }
 for _, srv in ipairs(servers) do
-  require("lspconfig")[srv].setup({
+  vim.lsp.config(srv, {
     on_attach = on_attach,
     capabilities = capabilities,
     -- …any other server-specific settings…
