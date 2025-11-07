@@ -16,7 +16,6 @@ if [ "$(uname)" = "Darwin" ]; then
   brew bundle --file="$SOURCE_DIR/../dot_Brewfile"
 else
   # azure-cli
-  # "$SOURCE_DIR"/scripts/linux_settings/azure_cli.sh
   mkdir -p /tmp/plemol && cd /tmp/plemol
   curl -L -o Plemol.zip https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_NF_v3.0.0.zip
   unzip Plemol.zip
