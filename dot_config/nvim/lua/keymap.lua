@@ -19,3 +19,8 @@ keymap("n", "<Leader>h", "<C-w>h", opts)
 keymap("n", "<Leader>j", "<C-w>j", opts)
 keymap("n", "<Leader>k", "<C-w>k", opts)
 keymap("n", "<Leader>l", "<C-w>l", opts)
+
+-- Tab navigation keymaps
+vim.keymap.set("n", "<Leader>tn", "<Cmd>tabnext<CR>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<Leader>tp", "<Cmd>tabprevious<CR>", { desc = "Go to previous tab" })
+vim.keymap.set("n", "<Leader>tc", "<Cmd>tabnew<CR>", { desc = "Open new tab" })
