@@ -9,7 +9,7 @@ local config = {}
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
--- Set CTRL+V as the leader key (mod equivalent)
+-- Set CTRL+G as the leader key (mod equivalent)
 config.leader = {
   key = "g",
   mods = "CTRL",
