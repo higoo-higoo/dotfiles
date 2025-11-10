@@ -26,7 +26,7 @@ end
 vim.lsp.config('matlab_ls', {
   settings = {
     MATLAB = {
-      installPath = "/Applications/MATLAB_R2025a.app", -- ←必ず設定する
+      installPath = "/Applications/MATLAB_R2025b.app", -- ←必ず設定する
       indexWorkspace = true,
       matlabConnectionTiming = "onStart",
       telemetry = false,
