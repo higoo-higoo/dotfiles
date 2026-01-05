@@ -1,4 +1,5 @@
 tap "lihaoyun6/tap"
+tap "nikitabobko/tap"
 tap "wtfutil/wtfutil"
 brew "azure-cli"
 brew "ccat"
