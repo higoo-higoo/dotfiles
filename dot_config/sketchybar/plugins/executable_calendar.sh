@@ -1,3 +1,5 @@
+#!/bin/sh
+
 events=$(gcalcli agenda --calendar Normal --tsv)
 
 # ヘッダーを除き、start_timeが空でない最初の予定を抽出
