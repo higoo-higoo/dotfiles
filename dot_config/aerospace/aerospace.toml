@@ -63,7 +63,10 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 0
 inner.vertical =   0
-outer.left =       0
+outer.left = [
+  { monitor."AAA" = 200 },
+  0
+]
 outer.bottom =     0
 outer.top = [
   { monitor."DELL" = 28 },
@@ -72,7 +75,10 @@ outer.top = [
   { monitor."AAA" = 28 },
   28
 ]
-outer.right =      0
+outer.right = [
+  { monitor."AAA" = 200 },
+  0
+]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -175,7 +181,7 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
+if.app-id = 'net.kovidgoyal.kitty'
 run = ['layout floating']
 
 [[on-window-detected]]
