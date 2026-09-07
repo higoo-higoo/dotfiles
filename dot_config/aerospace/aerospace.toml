@@ -67,7 +67,10 @@ outer.left = [
   { monitor."AAA" = 200 },
   0
 ]
-outer.bottom =     0
+outer.bottom =     [
+  { monitor."AAA" = 200 },
+  0
+]
 outer.top = [
   { monitor."DELL" = 28 },
   { monitor."ZQE" = 28 },
@@ -144,6 +147,11 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
+alt-a = 'workspace a'
+alt-b = 'workspace b'
+alt-c = 'workspace c'
+alt-d = 'workspace d'
+alt-e = 'workspace e'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -156,6 +164,11 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
+alt-shift-a = 'move-node-to-workspace a'
+alt-shift-b = 'move-node-to-workspace b'
+alt-shift-c = 'move-node-to-workspace c'
+alt-shift-d = 'move-node-to-workspace d'
+alt-shift-e = 'move-node-to-workspace e'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-events=$(gcalcli agenda --calendar Normal --tsv --nostarted --details location)
+events=$(gcalcli agenda --calendar higyuki1101@gmail.com --calendar yuki.higuchi@cte-agri.com  --tsv --nostarted --details location)
 
 # ヘッダーを除き、start_timeが空でない最初の予定を抽出
 next_event=$(echo "$events" | awk -F'\t' 'NR>1 && $2 != "" {print $1 " " $2 " - " $5; exit}')
