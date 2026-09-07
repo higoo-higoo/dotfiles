@@ -38,7 +38,7 @@ brew "tmux"
 brew "uv"
 brew "wget"
 cask "wtfutil/wtfutil/wtfutil", trusted: true
-brew "felixkratz/formulae/sketchybar"
+brew "felixkratz/formulae/sketchybar", trusted: true
 cask "font-plemol-jp-nf"
 cask "karabiner-elements"
 cask "mactex"
