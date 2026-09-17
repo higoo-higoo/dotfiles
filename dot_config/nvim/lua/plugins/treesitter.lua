@@ -1,5 +1,5 @@
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
+require("nvim-treesitter").setup()
+require("nvim-treesitter").install({
     "bash",
     "c",
     "cpp",
@@ -14,13 +14,4 @@ require("nvim-treesitter.configs").setup({
     "rust",
     "typescript",
     "yaml",
-  },
-
-  sync_install = true,
-
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-  },
 })
