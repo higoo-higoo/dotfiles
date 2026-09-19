@@ -158,7 +158,6 @@ require("packer").startup(function(use)
   use({
     "GCBallesteros/NotebookNavigator.nvim",
     requires = {
-      "echasnovski/mini.comment",
       "anuvyklack/hydra.nvim",
       {
         "benlubas/molten-nvim",
@@ -258,9 +257,9 @@ require("packer").startup(function(use)
     end,
   })
   use({
-    "numToStr/Comment.nvim",
+    "nvim-mini/mini.comment",
     config = function()
-      require("Comment").setup()
+      require("mini.comment").setup()
     end,
   })
   use({
