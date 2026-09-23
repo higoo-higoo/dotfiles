@@ -12,12 +12,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      # Vivaldi downloads repeatedly fail with curl error 92 over HTTP/2.
-      # Keep this workaround scoped to Homebrew downloads in CI.
-      - name: Configure Homebrew downloads
-        run: printf 'http1.1\n' > "$RUNNER_TEMP/homebrew.curlrc"
       - name: Run script
-        env:
-          HOMEBREW_CURLRC: ${{ runner.temp }}/homebrew.curlrc
         run: ${GITHUB_WORKSPACE}/run_once_install.sh
 
