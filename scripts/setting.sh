@@ -13,6 +13,7 @@ if [ "$(uname)" = "Darwin" ]; then
   defaults write com.apple.dock autohide -bool true
   killall Dock
   SOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
+  brew update
   brew bundle --file="$SOURCE_DIR/../dot_Brewfile"
 else
   # azure-cli
