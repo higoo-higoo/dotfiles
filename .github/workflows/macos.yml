@@ -12,17 +12,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      # Avoid a broken CDN cache entry; Homebrew still verifies the checksum.
-      - name: Cache Vivaldi download
-        run: |
-          metadata="$(brew info --json=v2 --cask vivaldi)"
-          url="$(printf '%s' "$metadata" | jq -r '.casks[0].url')"
-          checksum="$(printf '%s' "$metadata" | jq -r '.casks[0].sha256')"
-          cache="$(brew --cache --cask vivaldi)"
-          mkdir -p "$(dirname "$cache")"
-          curl --fail --location --retry 3 --retry-all-errors \
-            "$url?ci=$GITHUB_RUN_ID" --output "$cache"
-          printf '%s  %s\n' "$checksum" "$cache" | shasum -a 256 --check
       - name: Run script
         run: ${GITHUB_WORKSPACE}/run_once_install.sh
 
