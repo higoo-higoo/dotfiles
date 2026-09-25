@@ -17,6 +17,12 @@ vim.keymap.set("n", "<Leader>x", function()
     return
   end
 
+  -- 分割していない場合は、空バッファへの置き換えを挟まず直接削除する
+  if vim.fn.winnr("$") == 1 then
+    vim.cmd("bwipeout")
+    return
+  end
+
   -- 通常の、名前も内容もない空バッファかどうか
   local is_empty = vim.api.nvim_buf_get_name(buf) == ""
       and vim.bo[buf].buftype == ""
@@ -24,10 +30,7 @@ vim.keymap.set("n", "<Leader>x", function()
       and vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1] == ""
 
   if is_empty then
-    -- すでに空なら分割を閉じる。ただし現在のタブの最後の1枚は残す
-    if vim.fn.winnr("$") == 1 then
-      return
-    end
+    -- すでに空なら分割を閉じる
     vim.cmd("close")
   else
     -- ファイルを表示している場合は、分割を残して [No Name] にする
@@ -44,5 +47,5 @@ vim.keymap.set("n", "<Leader>x", function()
   end
 end, {
   silent = true,
-  desc = "Close buffer, then close empty window",
+  desc = "Close buffer directly when unsplit, otherwise clear then close window",
 })
